@@ -33,13 +33,6 @@ export default function Hero() {
 
   const currentContent = content[language];
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section className="relative overflow-hidden bg-secondary pt-20 pb-32">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,12 +48,14 @@ export default function Hero() {
           </p>
           
           <div className="mt-8">
-            <button
-              onClick={scrollToContact}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSf7qszVDHRemFe76IvFJJk1S6QfBRtn1IAI5As6T08IaoqJuw/viewform?usp=sf_link"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center px-8 py-3 border-0 text-base font-medium rounded-lg text-white bg-primary hover:bg-primary/90 transform hover:scale-105 transition-all duration-200 shadow-lg"
             >
               {currentContent.cta}
-            </button>
+            </a>
           </div>
 
           <div className="mt-12 max-w-3xl mx-auto">
@@ -89,6 +84,11 @@ export default function Hero() {
             </div>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
       </div>
     </section>
   );
