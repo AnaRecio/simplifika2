@@ -1,37 +1,53 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
+// Define types for better type checking
+type Language = 'es' | 'en';
+
+interface Content {
+  title: string;
+  highlight: string;
+  description: string;
+  cta: string;
+  benefits: string[];
+}
+
+interface ContentDictionary {
+  [key: string]: Content;
+}
+
+const content: ContentDictionary = {
+  es: {
+    title: 'Transforme su Negocio con',
+    highlight: 'Automatización Inteligente',
+    description: 'Optimice procesos, reduzca costos operativos y aumente la productividad con nuestras soluciones de automatización empresarial y análisis de datos avanzado.',
+    cta: 'Consulta Gratuita',
+    benefits: [
+      'Reducción de costos operativos hasta un 40%',
+      'Automatización de tareas repetitivas',
+      'Análisis de datos en tiempo real',
+      'Soporte técnico especializado 24/7'
+    ]
+  },
+  en: {
+    title: 'Transform Your Business with',
+    highlight: 'Intelligent Automation',
+    description: 'Optimize processes, reduce operational costs, and increase productivity with our enterprise automation solutions and advanced data analytics.',
+    cta: 'Free Consultation',
+    benefits: [
+      'Reduce operational costs by up to 40%',
+      'Automate repetitive tasks',
+      'Real-time data analysis',
+      '24/7 specialized technical support'
+    ]
+  }
+};
+
 export default function Hero() {
   const { language } = useLanguage();
 
-  const content = {
-    es: {
-      title: 'Transforme su Negocio con',
-      highlight: 'Automatización Inteligente',
-      description: 'Optimice procesos, reduzca costos operativos y aumente la productividad con nuestras soluciones de automatización empresarial y análisis de datos avanzado.',
-      cta: 'Consulta Gratuita',
-      benefits: [
-        'Reducción de costos operativos hasta un 40%',
-        'Automatización de tareas repetitivas',
-        'Análisis de datos en tiempo real',
-        'Soporte técnico especializado 24/7'
-      ]
-    },
-    en: {
-      title: 'Transform Your Business with',
-      highlight: 'Intelligent Automation',
-      description: 'Optimize processes, reduce operational costs, and increase productivity with our enterprise automation solutions and advanced data analytics.',
-      cta: 'Free Consultation',
-      benefits: [
-        'Reduce operational costs by up to 40%',
-        'Automate repetitive tasks',
-        'Real-time data analysis',
-        '24/7 specialized technical support'
-      ]
-    }
-  };
-
-  const currentContent = content[language];
+  // Use type assertion to ensure language is either 'es' or 'en'
+  const currentContent = content[language as Language];
 
   return (
     <section className="relative overflow-hidden bg-secondary pt-20 pb-32">
@@ -70,6 +86,7 @@ export default function Hero() {
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -88,5 +105,6 @@ export default function Hero() {
     </section>
   );
 }
+
 
 
