@@ -6,7 +6,6 @@ import Services from './components/Services';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import TallyScript from './components/TallyScript';
 
 function App() {
   return (
@@ -20,7 +19,6 @@ function App() {
           <Contact />
         </main>
         <Footer />
-        <TallyScript />
       </div>
     </LanguageProvider>
   );
